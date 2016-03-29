@@ -54,3 +54,5 @@ ENV JAVA_HOME /usr/lib/jvm/java-8-oracle
 RUN curl -sL https://deb.nodesource.com/setup_5.x | sudo -E bash - && \
     apt-get update && \
     apt-get -y install nodejs
+
+RUN npm install -g webpack babel-cli
