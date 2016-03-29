@@ -51,6 +51,6 @@ RUN \
 ENV JAVA_HOME /usr/lib/jvm/java-8-oracle
 
 # Node stuff:
-RUN apt-get update && \
-    apt-get -y install wget curl git nodejs npm && \
-    ln -s /usr/bin/nodejs /usr/bin/node
+RUN curl -sL https://deb.nodesource.com/setup_5.x | sudo -E bash - && \
+    apt-get update && \
+    apt-get -y nodejs
