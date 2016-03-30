@@ -32,9 +32,9 @@ RUN apt-get update && \
     ln -s /opt/git-openssl/git-1.9.1/bin-wrappers/git /usr/bin/git
 
 # Install sbt
-RUN wget https://dl.bintray.com/sbt/debian/sbt-0.13.9.deb && \
-  dpkg -i sbt-0.13.9.deb && \
-  rm sbt-0.13.9.deb && \
+RUN wget https://dl.bintray.com/sbt/debian/sbt-0.13.11.deb && \
+  dpkg -i sbt-0.13.11.deb && \
+  rm sbt-0.13.11.deb && \
   apt-get update && apt-get install -y sbt
 
 # Install Java.
