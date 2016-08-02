@@ -56,3 +56,6 @@ RUN curl -sL https://deb.nodesource.com/setup_5.x | sudo -E bash - && \
     apt-get -y install nodejs
 
 RUN npm install -g webpack babel-cli
+
+# jq!
+RUN sudo apt-get -y install jq
