@@ -59,3 +59,8 @@ RUN npm install -g webpack babel-cli
 
 # jq!
 RUN sudo apt-get -y install jq
+
+# Ruby stuff
+RUN apt-add-repository -y ppa:brightbox/ruby-ng && \
+    apt-get update && \
+    apt-get -y install ruby2.2
