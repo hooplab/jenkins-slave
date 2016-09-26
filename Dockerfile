@@ -64,3 +64,10 @@ RUN sudo apt-get -y install jq
 RUN apt-add-repository -y ppa:brightbox/ruby-ng && \
     apt-get update && \
     apt-get -y install ruby2.2
+
+# Dredd: for doctesting
+RUN npm install -g dredd
+
+# psql for connecting to postgresql
+RUN apt-get update && \
+    apt-get -y install postgresql-client-9.3
