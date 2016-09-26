@@ -25,11 +25,11 @@ RUN apt-get update && \
     apt-get source -y git && \
     apt-get build-dep -y git && \
     apt-get install -y libcurl4-openssl-dev && \
-    dpkg-source -x git_1.9.1-1ubuntu0.2.dsc && \
-    cd git-1.9.1 && \
+    dpkg-source -x git_*.dsc && \
+    cd git* && \
     ./configure --prefix=/opt && \
     make && \
-    ln -s /opt/git-openssl/git-1.9.1/bin-wrappers/git /usr/bin/git
+    ln -s /opt/git-openssl/git-*/bin-wrappers/git /usr/bin/git
 
 # Install sbt
 RUN wget https://dl.bintray.com/sbt/debian/sbt-0.13.11.deb && \
