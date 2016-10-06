@@ -72,3 +72,6 @@ RUN npm install -g dredd
 # psql for connecting to postgresql
 RUN apt-get update && \
     apt-get -y install postgresql-client-9.3
+
+RUN apt-get update && \
+    apt-get -y install redis-tools
