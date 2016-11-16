@@ -51,14 +51,10 @@ RUN \
 ENV JAVA_HOME /usr/lib/jvm/java-8-oracle
 
 # Node stuff:
-RUN curl -sL https://deb.nodesource.com/setup_5.x | sudo -E bash - && \
-    apt-get update && \
-    apt-get -y install nodejs
-
-RUN npm install -g webpack babel-cli
+RUN curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.32.1/install.sh | sudo -E bash
 
 # jq!
-RUN sudo apt-get -y install jq
+RUN apt-get update && apt-get -y install jq
 
 # Ruby stuff
 RUN apt-add-repository -y ppa:brightbox/ruby-ng && \
@@ -66,7 +62,15 @@ RUN apt-add-repository -y ppa:brightbox/ruby-ng && \
     apt-get -y install ruby2.2 && \
     gem install bundler
 
-# Dredd: for doctesting
+ENV NVM_DIR /usr/local/nvm
+ENV NODE_VERSION 6.9.0
+RUN curl https://raw.githubusercontent.com/creationix/nvm/v0.32.1/install.sh | bash \
+    && . $NVM_DIR/nvm.sh && nvm install $NODE_VERSION && nvm use $NODE_VERSION && nvm alias default $NODE_VERSION && nvm use default
+
+ENV NODE_PATH $NVM_DIR/versions/node/v$NODE_VERSION/lib/node_modules
+ENV PATH      $NVM_DIR/versions/node/v$NODE_VERSION/bin:$PATH
+
+RUN echo $PATH
 RUN npm install -g dredd
 
 # psql for connecting to postgresql
